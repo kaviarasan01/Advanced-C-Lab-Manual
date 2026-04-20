@@ -293,20 +293,57 @@ Algorithm:
 13.End the program by returning 0.
 
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct subject {
+    char name[50];
+    int marks;
+};
 
+int main() {
+    int n, i;
+    struct subject *s;
 
+    // Step 1 & 2: Input number of subjects
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
 
+    // Step 3: Dynamically allocate memory
+    s = (struct subject *)malloc(n * sizeof(struct subject));
 
+    // Step 5: Check allocation
+    if (s == NULL) {
+        printf("Error: Memory allocation failed.\n");
+        return 1; // Exit with non-zero status
+    }
+
+    // Step 6: Input details
+    for (i = 0; i < n; i++) {
+        printf("\nEnter name of subject %d: ", i + 1);
+        scanf("%s", s[i].name);
+
+        printf("Enter marks for subject %d: ", i + 1);
+        scanf("%d", &s[i].marks);
+    }
+
+    // Step 7: Display details
+    printf("\n--- Subject Details ---\n");
+    for (i = 0; i < n; i++) {
+        printf("Subject: %s, Marks: %d\n", s[i].name, s[i].marks);
+    }
+
+    // Step 8: Free memory
+    free(s);
+
+    return 0; // Step 9
+}
+
+```
 Output:
 
-
-//paste your output here
-
-
-
-
+<img width="729" height="408" alt="image" src="https://github.com/user-attachments/assets/71d09cf7-9345-425e-b010-3bb1fd4caff3" />
 
 
 Result:
