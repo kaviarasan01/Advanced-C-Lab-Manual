@@ -15,12 +15,29 @@ Algorithm:
 4.	Exit the program.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
 
-
-
-
+    switch(n) {
+        case 5:  printf("seventy one\n"); break;
+        case 6:  printf("seventy two\n"); break;
+        case 7:  printf("seventy three\n"); break;
+        case 8:  printf("seventy four\n"); break;
+        case 9:  printf("seventy five\n"); break;
+        case 10: printf("seventy six\n"); break;
+        case 11: printf("seventy seven\n"); break;
+        case 12: printf("seventy eight\n"); break;
+        case 13: printf("seventy nine\n"); break;
+        default: printf("Greater than 13\n");
+    }
+    return 0;
+}
+```
 Output:
 
 
@@ -47,10 +64,30 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <string.h>
 
+int main() {
+    char a[50];
+    int count[10] = {0};  // frequency array for digits 0–9
 
+    printf("Enter a string of digits: ");
+    scanf("%s", a);
 
+    for(int i = 0; i < strlen(a); i++) {
+        if(a[i] >= '0' && a[i] <= '9') {
+            count[a[i] - '0']++;
+        }
+    }
+
+    // print frequencies of digits 0–9
+    for(int i = 0; i < 10; i++) {
+        printf("%d ", count[i]);
+    }
+    return 0;
+}
+```
 
 Output:
 
@@ -84,10 +121,41 @@ Free the memory allocated for each string in s Free the memory allocated for s
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
+// helper function for swapping
+void swap(char *x, char *y) {
+    char temp = *x;
+    *x = *y;
+    *y = temp;
+}
 
+// recursive function to generate permutations
+void permute(char *str, int l, int r) {
+    if(l == r) {
+        printf("%s\n", str);
+    } else {
+        for(int i = l; i <= r; i++) {
+            swap(&str[l], &str[i]);
+            permute(str, l+1, r);
+            swap(&str[l], &str[i]); // backtrack
+        }
+    }
+}
 
+int main() {
+    char str[50];
+    printf("Enter a string: ");
+    scanf("%s", str);
+    int n = strlen(str);
+
+    permute(str, 0, n-1);
+    return 0;
+}
+```
 
 Output:
 
@@ -117,9 +185,28 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
 
+int main() {
+    int n;
+    printf("Enter n: ");
+    scanf("%d", &n);
 
+    int len = n * 2 - 1;
+
+    for(int i = 0; i < len; i++) {
+        for(int j = 0; j < len; j++) {
+            int min = i < j ? i : j;
+            if(len - i - 1 < min) min = len - i - 1;
+            if(len - j - 1 < min) min = len - j - 1;
+            printf("%d ", n - min);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+```
 
 
 Output:
@@ -156,10 +243,22 @@ o	Call the square() function and display the result.
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
 
+int square() {
+    int num;
+    printf("Enter a number: ");
+    scanf("%d", &num);
+    return num * num;
+}
 
-
+int main() {
+    int result = square();
+    printf("Square = %d\n", result);
+    return 0;
+}
+```
 
 Output:
 
