@@ -15,13 +15,45 @@ Else
 6.	Return 0
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+struct eligible {
+    int age;
+    char name[50];
+};
 
+int main() {
+    int n, i;
+    printf("Enter number of persons: ");
+    scanf("%d", &n);
+
+    struct eligible e[n];  // array of structures
+
+    for (i = 0; i < n; i++) {
+        printf("\nEnter name of person %d: ", i + 1);
+        scanf("%s", e[i].name);
+
+        printf("Enter age of person %d: ", i + 1);
+        scanf("%d", &e[i].age);
+
+        if (e[i].age <= 6) {
+            printf("Vaccine Eligibility: No\n");
+        } else {
+            printf("Vaccine Eligibility: Yes\n");
+        }
+
+        printf("Details - Name: %s, Age: %d\n", e[i].name, e[i].age);
+    }
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
+<img width="350" height="315" alt="image" src="https://github.com/user-attachments/assets/5b636356-785b-4f80-8fc5-05dc67c96ebd" />
+
 
 
 Result:
@@ -43,18 +75,39 @@ Algorithm:
 7.	Return 0
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+// Step 1: Define structure
+struct numbers {
+    int a;
+    int b;
+};
 
+// Step 5: Function to add values
+int add(struct numbers n) {
+    return n.a + n.b;
+}
 
+int main() {
+    struct numbers n;  // Step 2: Declare variable
 
+    // Step 3: Prompt user
+    printf("Enter value for a: ");
+    scanf("%d", &n.a);
 
+    printf("Enter value for b: ");
+    scanf("%d", &n.b);
+
+    // Step 6: Call add function and print result
+    int result = add(n);
+    printf("Sum = %d\n", result);
+
+    return 0;  // Step 7
+}
+```
 Output:
-
-
-//paste your output here
-
-
+<img width="365" height="211" alt="image" src="https://github.com/user-attachments/assets/a5931734-0772-4d00-938c-8c049207720e" />
 
 
 Result:
@@ -85,24 +138,44 @@ Use scanf to input the file name into the name array.
 5.	Return 0 to indicate successful program execution.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    FILE *p;             // Step 3: Declare file pointer
+    char name[50];       // Step 3: Declare character array for filename
 
+    // Step 4: Prompt user
+    printf("Enter the file name: ");
+    scanf("%s", name);
 
+    // Step 5: Print creation message
+    printf("File '%s' has been created successfully.\n", name);
+
+    // Step 6: Open file in write mode
+    p = fopen(name, "w");
+    if (p == NULL) {
+        printf("Error: Unable to create or open the file.\n");
+        return 1;  // Exit with non-zero status
+    }
+
+    // Step 7: File opened successfully
+    printf("File '%s' has been opened successfully.\n", name);
+
+    // Step 8: Close file
+    fclose(p);
+
+    // Step 9: Print closing message
+    printf("File '%s' has been closed.\n", name);
+
+    // Step 10: End program
+    return 0;
+}
+```
 
 
 Output:
-
-
-//paste your output here
-
-
-
-
-
-
-
-
+<img width="694" height="194" alt="image" src="https://github.com/user-attachments/assets/7d14cb83-42eb-41b9-80d6-5543b2bfb7c4" />
 
 
 
@@ -133,19 +206,53 @@ Use scanf to input the file name into the name array and the number of strings i
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
 
+int main() {
+    FILE *p;             // Step 3: File pointer
+    char name[50];       // Step 3: Array for filename
+    char text[100];      // Step 3: Array for text
+    int num, i;
 
+    // Step 4: Prompt user
+    printf("Enter the file name: ");
+    scanf("%s", name);
 
+    printf("Enter the number of strings to insert: ");
+    scanf("%d", &num);
+
+    // Step 5: Open file in write mode
+    p = fopen(name, "w");
+    if (p == NULL) {
+        printf("Error: Unable to open file.\n");
+        return 1;  // Exit with non-zero status
+    }
+
+    // Step 6: File opened successfully
+    printf("File '%s' opened successfully.\n", name);
+
+    // Step 7: Loop to input and write strings
+    for (i = 0; i < num; i++) {
+        printf("Enter string %d: ", i + 1);
+        scanf("%s", text);   // read string (no spaces)
+        fputs(text, p);      // write string to file
+        fputs("\n", p);      // add newline for readability
+    }
+
+    // Step 8: Close file
+    fclose(p);
+
+    // Step 9: Success message
+    printf("Data has been added successfully to '%s'.\n", name);
+
+    return 0;  // Step 10
+}
+```
 
 Output:
 
-
-//paste your output here
-
-
-
-
+<img width="833" height="278" alt="image" src="https://github.com/user-attachments/assets/78300b83-807d-4e29-a1e3-3b7942a1e0f9" />
 
 
 Result:
