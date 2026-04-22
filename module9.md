@@ -1,4 +1,4 @@
-<img width="304" height="343" alt="image" src="https://github.com/user-attachments/assets/ea180214-9f55-42e2-8a8c-15661abf4f40" /><img width="319" height="180" alt="image" src="https://github.com/user-attachments/assets/51f65339-13bd-4d2a-8732-c97a3333b914" /><img width="331" height="258" alt="image" src="https://github.com/user-attachments/assets/008f4a45-7bf4-451a-b662-658cd24e4e65" />EXP NO:11 C PROGRAM TO DISPLAY STACK ELEMENTS USING AN ARRAY.
+EXP NO:11 C PROGRAM TO DISPLAY STACK ELEMENTS USING AN ARRAY.
 
 Aim:
 To write a C program to display stack elements using an array.
