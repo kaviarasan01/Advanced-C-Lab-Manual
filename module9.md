@@ -1,4 +1,4 @@
-EXP NO:11 C PROGRAM TO DISPLAY STACK ELEMENTS USING AN ARRAY.
+<img width="304" height="343" alt="image" src="https://github.com/user-attachments/assets/ea180214-9f55-42e2-8a8c-15661abf4f40" /><img width="319" height="180" alt="image" src="https://github.com/user-attachments/assets/51f65339-13bd-4d2a-8732-c97a3333b914" /><img width="331" height="258" alt="image" src="https://github.com/user-attachments/assets/008f4a45-7bf4-451a-b662-658cd24e4e65" />EXP NO:11 C PROGRAM TO DISPLAY STACK ELEMENTS USING AN ARRAY.
 
 Aim:
 To write a C program to display stack elements using an array.
@@ -13,12 +13,59 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#define MAX 50
+
+int stack[MAX];
+int top = -1;
+
+void push(int x) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow\n");
+    } else {
+        stack[++top] = x;
+        printf("%d pushed into stack\n", x);
+    }
+}
+
+void pop() {
+    if (top == -1) {
+        printf("Stack Underflow\n");
+    } else {
+        printf("%d popped from stack\n", stack[top--]);
+    }
+}
+
+void display() {
+    if (top == -1) {
+        printf("Stack is empty\n");
+    } else {
+        printf("Stack elements: ");
+        for (int i = top; i >= 0; i--) {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+    display();
+
+    pop();
+    display();
+
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
-
+<img width="330" height="270" alt="image" src="https://github.com/user-attachments/assets/f7eb8cad-8a48-4f56-8fb4-294c2a502f48" />
 
 
 Result:
@@ -36,13 +83,35 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#define MAX 50
+
+float stack[MAX];
+int top = -1;
+
+void push(float x) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow\n");
+    } else {
+        stack[++top] = x;
+        printf("%.2f pushed into stack\n", x);
+    }
+}
+
+int main() {
+    // Example pushes
+    push(10.5);
+    push(20.75);
+    push(30.25);
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
-
-
+<img width="298" height="164" alt="image" src="https://github.com/user-attachments/assets/4b6dbd32-b4e9-47f3-af5b-b7c1d73f1a26" />
 
 
 Result:
@@ -62,12 +131,60 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#define MAX 50
+
+int queue[MAX];
+int front = -1, rear = -1;
+
+void enqueue(int x) {
+    if (rear == MAX - 1) {
+        printf("Queue Overflow\n");
+    } else {
+        if (front == -1) front = 0;
+        queue[++rear] = x;
+        printf("%d enqueued into queue\n", x);
+    }
+}
+
+void dequeue() {
+    if (front == -1 || front > rear) {
+        printf("Queue Underflow\n");
+        front = rear = -1; // reset
+    } else {
+        printf("%d dequeued from queue\n", queue[front++]);
+    }
+}
+
+void display() {
+    if (front == -1 || front > rear) {
+        printf("Queue is empty\n");
+    } else {
+        printf("Queue elements: ");
+        for (int i = front; i <= rear; i++) {
+            printf("%d ", queue[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    display();
+
+    dequeue();
+    display();
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
-
+<img width="331" height="258" alt="image" src="https://github.com/user-attachments/assets/2b2d8c78-65ee-4ad9-895d-c53767baac8d" />
 
 Result:
 Thus, the program to display queue elements using array is verified successfully.
@@ -86,11 +203,36 @@ Algorithm:
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#define MAX 50
+
+float queue[MAX];
+int front = -1, rear = -1;
+
+void enqueue(float x) {
+    if (rear == MAX - 1) {
+        printf("Queue Overflow\n");
+    } else {
+        if (front == -1) front = 0;  // first insertion
+        queue[++rear] = x;
+        printf("%.2f enqueued into queue\n", x);
+    }
+}
+
+int main() {
+    // Example insertions
+    enqueue(10.5);
+    enqueue(20.75);
+    enqueue(30.25);
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
+<img width="319" height="180" alt="image" src="https://github.com/user-attachments/assets/a69d97d0-8209-49d6-a706-73c0d061e21b" />
 
 Result:
 Thus, the program to insert elements in queue using array is verified successfully.
@@ -121,11 +263,68 @@ o	After deletion, check if the front pointer has passed the rear pointer (front 
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#define MAX 50
+
+int queue[MAX];
+int front = -1, rear = -1;
+
+void enqueue(int x) {
+    if (rear == MAX - 1) {
+        printf("Queue Overflow\n");
+    } else {
+        if (front == -1) front = 0;
+        queue[++rear] = x;
+        printf("%d enqueued into queue\n", x);
+    }
+}
+
+void dequeue() {
+    if (front == -1 || front > rear) {
+        printf("Queue is empty\n");
+        front = rear = -1; // reset
+    } else {
+        printf("%d dequeued from queue\n", queue[front++]);
+        if (front > rear) {
+            front = rear = -1; // reset after last deletion
+        }
+    }
+}
+
+void display() {
+    if (front == -1 || front > rear) {
+        printf("Queue is empty\n");
+    } else {
+        printf("Queue elements: ");
+        for (int i = front; i <= rear; i++) {
+            printf("%d ", queue[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    display();
+
+    dequeue();
+    display();
+
+    dequeue();
+    dequeue();
+    display();
+
+    return 0;
+}
+```
 
 Output:
 
-//paste your output here
+<img width="304" height="343" alt="image" src="https://github.com/user-attachments/assets/b3c74101-2f6e-499c-ae4c-133b2b029f38" />
+
 
 
 Result:
