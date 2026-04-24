@@ -10,12 +10,74 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define node structure
+struct Node {
+    char data;
+    struct Node *next;
+};
+
+// Function to create a new node
+struct Node* createNode(char data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert node at end
+void insertNode(struct Node** head, char data) {
+    struct Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    struct Node* temp = *head;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = newNode;
+}
+
+// Function to search for an element
+int searchElement(struct Node* head, char key) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        if (temp->data == key)
+            return 1; // found
+        temp = temp->next;
+    }
+    return 0; // not found
+}
+
+int main() {
+    struct Node* head = NULL;
+    char key;
+
+    // Build linked list
+    insertNode(&head, 'A');
+    insertNode(&head, 'B');
+    insertNode(&head, 'C');
+    insertNode(&head, 'D');
+
+    printf("Enter element to search: ");
+    scanf(" %c", &key);
+
+    if (searchElement(head, key))
+        printf("Element %c found in the list.\n", key);
+    else
+        printf("Element %c not found in the list.\n", key);
+
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
-
+<img width="683" height="220" alt="image" src="https://github.com/user-attachments/assets/6ec43c86-805f-4716-bf57-26990d64313f" />
 
 
 Result:
@@ -33,12 +95,66 @@ Algorithm:
 4.	Call the insert function and perform other linked list operations as needed.
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+// Define node structure
+struct Node {
+    char data;
+    struct Node *next;
+};
 
+// Function to create a new node
+struct Node* createNode(char data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert node at end
+void insertNode(struct Node** head, char data) {
+    struct Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    struct Node* temp = *head;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = newNode;
+}
+
+// Function to display linked list
+void displayList(struct Node* head) {
+    struct Node* temp = head;
+    printf("Linked List: ");
+    while (temp != NULL) {
+        printf("%c -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+
+    // Insert nodes
+    insertNode(&head, 'A');
+    insertNode(&head, 'B');
+    insertNode(&head, 'C');
+    insertNode(&head, 'D');
+
+    // Display list
+    displayList(head);
+
+    return 0;
+}
+```
 Output:
 
-//paste your output here
+<img width="559" height="70" alt="image" src="https://github.com/user-attachments/assets/64b5f196-ca03-4262-81de-6cda0a246efe" />
 
  
 Result:
@@ -58,11 +174,71 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define node structure
+struct Node {
+    int data;
+    struct Node *prev;
+    struct Node *next;
+};
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->prev = NULL;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert node at end
+void insertNode(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    struct Node* temp = *head;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = newNode;
+    newNode->prev = temp;
+}
+
+// Function to traverse and display doubly linked list
+void traverseList(struct Node* head) {
+    struct Node* temp = head;
+    printf("Doubly Linked List: ");
+    while (temp != NULL) {
+        printf("%d <-> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+
+    // Insert nodes
+    insertNode(&head, 10);
+    insertNode(&head, 20);
+    insertNode(&head, 30);
+    insertNode(&head, 40);
+
+    // Traverse and display list
+    traverseList(head);
+
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
+<img width="666" height="61" alt="image" src="https://github.com/user-attachments/assets/f933dcf6-5062-4c39-8051-5d4bf43dc96e" />
 
 
 Result:
@@ -83,11 +259,72 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define node structure
+struct Node {
+    int data;
+    struct Node *prev;
+    struct Node *next;
+};
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->prev = NULL;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert node at end
+void insertNode(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    struct Node* temp = *head;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = newNode;
+    newNode->prev = temp;
+}
+
+// Function to display doubly linked list
+void displayList(struct Node* head) {
+    struct Node* temp = head;
+    printf("Doubly Linked List: ");
+    while (temp != NULL) {
+        printf("%d <-> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node* head = NULL;
+
+    // Insert elements
+    insertNode(&head, 10);
+    insertNode(&head, 20);
+    insertNode(&head, 30);
+    insertNode(&head, 40);
+
+    // Display list
+    displayList(head);
+
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
+<img width="500" height="58" alt="image" src="https://github.com/user-attachments/assets/2bd593dd-0a04-43c4-865a-793e9773ab4c" />
+
 
 
 Result:
@@ -125,14 +362,106 @@ o	If the element is not found in any node, print a message indicating the elemen
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define node structure
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+// Function to delete a given element
+void deleteElement(struct Node **head, int key) {
+    struct Node *temp = *head;
+    struct Node *prev = NULL;
+
+    // Case 1: Empty list
+    if (*head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    // Case 2: Element is in the head node
+    if (temp != NULL && temp->data == key) {
+        *head = temp->next;
+        free(temp);
+        printf("Element %d deleted from the list.\n", key);
+        return;
+    }
+
+    // Case 3: Traverse to find the element
+    while (temp != NULL && temp->data != key) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    // Element not found
+    if (temp == NULL) {
+        printf("Element %d not found in the list.\n", key);
+        return;
+    }
+
+    // Element found in middle or end
+    prev->next = temp->next;
+    free(temp);
+    printf("Element %d deleted from the list.\n", key);
+}
+
+// Function to insert node at end
+void insertNode(struct Node **head, int data) {
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+
+    struct Node *temp = *head;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = newNode;
+}
+
+// Function to display linked list
+void displayList(struct Node *head) {
+    struct Node *temp = head;
+    printf("Linked List: ");
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node *head = NULL;
+
+    // Insert elements
+    insertNode(&head, 10);
+    insertNode(&head, 20);
+    insertNode(&head, 30);
+    insertNode(&head, 40);
+
+    // Display list
+    displayList(head);
+
+    // Delete an element
+    deleteElement(&head, 20);
+
+    // Display updated list
+    displayList(head);
+
+    return 0;
+}
+
+```
 
 Output:
-
-//paste your output here
-
-
-
+<img width="548" height="94" alt="image" src="https://github.com/user-attachments/assets/4e482b80-2685-49ca-b0c5-49bd21701834" />
 
 
 Result:
